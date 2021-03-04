@@ -115,3 +115,19 @@ resource "aws_security_group" "allow_all" {
     Name = "allow_all"
   }
 }
+resource "aws_instance" "public" {
+    ami = "ami-0eeb03e72075b9bcc"
+    instance_type = "t2.micro"
+    subnet_id = aws_subnet.pubsub.id  
+    key_name = "02032021"
+    vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
+    associate_public_ip_address = true   
+}
+resource "aws_instance" "private" {
+    ami = "ami-0eeb03e72075b9bcc"
+    instance_type = "t2.micro"
+    subnet_id = aws_subnet.prisub.id  
+    key_name = "02032021"
+    vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
+  
+}
