@@ -131,3 +131,5 @@ resource "aws_instance" "private" {
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
   
 }
+
+testing for the third commit
